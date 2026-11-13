@@ -2526,10 +2526,15 @@ export default {
     let fieldSettings = loadSettingsFromDisk();
     let settingsConfigVersion = 0; // configVersion：每次设置变更 +1，客户端据此识别新配置
     function settingsPayload(persistError) {
+      // 本地补丁（2026-11-13）：服务商/模型身份字段始终上报为关闭，任何前端/旧缓存都无法再显示。
+      const fields = shallowSettingsCopy(fieldSettings.fields);
+      fields.anchorGroup = false;
+      fields.subServiceGroup = false;
+      fields.billingServiceGroup = false;
       return {
         version: fieldSettings.version,
         infoDensity: config.infoDensity,
-        fields: shallowSettingsCopy(fieldSettings.fields),
+        fields: fields,
         colors: shallowSettingsCopy(fieldSettings.colors),
         timeZones: { ...fieldSettings.timeZones },
         customText: fieldSettings.customText,
