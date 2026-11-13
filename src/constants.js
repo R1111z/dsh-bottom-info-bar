@@ -369,10 +369,7 @@ export const PROVIDER_IDENTITY = {
 // 不存在第二份需要手工同步的清单。section 借用了同一套名字，那只是"列在设置页哪一块"的阅读分组。
 // ============================================================================================
 export const FIELD_REGISTRY = [
-  // ---------- 插件信息 · 身份锚点（服务商 · 模型；三种计费形态各一个，用户可隐藏） ----------
-  { id: 'anchorGroup', label: "field.anchorGroup.label", group: 'plugin', section: 'identity', anchor: true, colorKind: 'provider', note: "field.anchorGroup.note" },
-  { id: 'subServiceGroup', label: "field.subServiceGroup.label", group: 'plugin', section: 'identity', anchor: true, colorKind: 'provider', note: "field.subServiceGroup.note" },
-  { id: 'billingServiceGroup', label: "field.billingServiceGroup.label", group: 'plugin', section: 'identity', anchor: true, colorKind: 'provider', note: "field.billingServiceGroup.note" },
+  // 本地补丁（2026-11-13）：服务商/模型身份锚点已彻底移除——信息栏不再渲染，设置页也不再提供开关。
   // ---------- 插件信息 · 通用（任何计费形态都可能出现） ----------
   // 自定义文字：纯自定义，位于服务商/模型左侧；为空时不渲染（开关可保持开启，无内容就无占位）
   { id: 'customText', label: "field.customText.label", group: 'plugin', section: 'common', defaultOff: true, colorKind: 'inherit', note: "field.customText.note" },
@@ -438,7 +435,6 @@ export const FIELD_GROUP_LABELS = {
 // 字段自报家门（FIELD_REGISTRY[].section），所以不存在第二份需要手工同步的清单；
 // tests/test-field-sections.cjs 会拦住漏标、错标与空小节。
 export const FIELD_SECTIONS = [
-  { id: 'identity', label: "section.identity.label", desc: "section.identity.desc" },
   { id: 'balance', label: "section.balance.label", desc: "section.balance.desc" },
   { id: 'subscription', label: "section.subscription.label", desc: "section.subscription.desc" },
   { id: 'billing', label: "section.billing.label", desc: "section.billing.desc" },
